@@ -1,0 +1,70 @@
+<table>
+<tr>
+    <td>
+    <th>事件名称：</th>
+    </td>
+    <td>
+    <th>{{ result.object.e_name }}</th>
+    </td>
+</tr>
+<tr>
+    <td>
+    <th>事件地址：</th>
+    </td>
+    <td>
+    <th>{{ result.object.e_address }}</th>
+    </td>
+</tr>
+<tr>
+    <td>
+    <th>事件类型：</th>
+    </td>
+    {% if result.object.attr == 'mov' %}
+        <td>
+        <th>电影</th></td>
+    {% elif result.object.attr == 'mus' %}
+        <td>
+        <th>音乐</th></td>
+    {% elif result.object.attr == 'car' %}
+        <td>
+        <th>汽车</th></td>
+    {% elif result.object.attr == 'boo' %}
+        <td>
+        <th>图书</th></td>
+    {% elif result.object.attr == 'gam' %}
+        <td>
+        <th>游戏</th></td>
+    {% elif result.object.attr == 'for' %}
+        <td>
+        <th>国外大学</th></td>
+    {% elif result.object.attr == 'col' %}
+        <td>
+        <th>国内大学</th></td>
+    {% elif result.object.attr == 'spo' %}
+        <td>
+        <th>体育</th></td>
+    {% elif result.object.attr == 'sta' %}
+        <td>
+        <th>明星</th></td>
+    {% elif result.object.attr == 'sto' %}
+        <td>
+        <th>股票</th></td>
+    {% endif %}
+</tr>
+<tr>
+    <td>
+    <th>事件余额：</th>
+    </td>
+    <td>
+    <th>{{ result.object.e_balance }}</th>
+    </td>
+</tr>
+<tr>
+    <td>
+    <th>参与人数：</th>
+    </td>
+    <td>
+    <th>{{ result.object.userprofile_set.all|length }}</th>
+    </td>
+</tr>
+</table>

@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>搜索结果</title>
+    <!-- Bootstrap -->
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'search.css' %}" rel="stylesheet">
+    <!-- 引入下面两个库让 IE8 支持 HTML5 元素 -->
+    <!-- 警告: Respond.js 通过 file:// 浏览的时候不能正常工作！-->
+    <!--[if lt IE 9]>
+      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{% if query %}
+    <h2>搜索结果如下：</h2>
+    <div class="list">
+        <ol>
+            {% for result in page.object_list %}
+                <li>
+                    <div class="userinfo">
+                        {% include 'search/eventinfo.html' %}
+                    </div>
+                    <h>部分参与用户信息：</h>
+                    <ol>
+                        {% for user in result.object.userprofile_set.all|slice:":10" %}
+                            <li>
+                                <div class="userinfo">
+                                    {% include 'search/userinfo.html' %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </li>
+            {% empty %}
+                <p>没找到匹配内容</p>
+            {% endfor %}
+        </ol>
+    </div>
+    {% if page.has_previous or page.has_next %}
+        <div>
+            {% if page.has_previous %}
+                <a href="?q={{ query}}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo;上一页{% if page.has_previous %}</a>{% endif %}
+            {% if page.has_next %}
+                <a href="?q={{ query}}&amp;page={{ page.next_page_number }}">{% endif %}下一页&raquo;{% if page.has_next %}</a>{% endif %}
+        </div>
+    {% endif %}
+{% endif %}
+</body>
+</html>
