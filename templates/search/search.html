@@ -18,22 +18,24 @@
 </head>
 <body>
 {% if query %}
-    <h2>搜索结果如下：</h2>
+    <h2>搜索结果如下：(共{{ page.object_list|length }}条）</h2>
     <div class="list">
         <ol>
             {% for result in page.object_list %}
                 <li>
                     <div class="userinfo">
-                        {% include 'search/eventinfo.html' %}
+                        {% include 'search/userinfo.html' %}
                     </div>
-                    <h>部分参与用户信息：</h>
+                    <h>部分参与事件：共参与{{ result.object.associate.all|length }}件</h>
                     <ol>
-                        {% for user in result.object.userprofile_set.all|slice:":10" %}
+                        {% for event in result.object.associate.all|slice:":5" %}
                             <li>
-                                <div class="userinfo">
-                                    {% include 'search/userinfo.html' %}
+                                <div>
+                                    {% include 'search/eventinfo.html' %}
                                 </div>
                             </li>
+                        {% empty %}
+                            <p>无参与事件</p>
                         {% endfor %}
                     </ol>
                 </li>

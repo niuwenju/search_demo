@@ -4,7 +4,7 @@
     <th>事件名称：</th>
     </td>
     <td>
-    <th>{{ result.object.e_name }}</th>
+    <th>{{ event.e_name }}</th>
     </td>
 </tr>
 <tr>
@@ -12,41 +12,41 @@
     <th>事件地址：</th>
     </td>
     <td>
-    <th>{{ result.object.e_address }}</th>
+    <th>{{ event.e_address }}</th>
     </td>
 </tr>
 <tr>
     <td>
     <th>事件类型：</th>
     </td>
-    {% if result.object.attr == 'mov' %}
+    {% if event.attr == 'mov' %}
         <td>
         <th>电影</th></td>
-    {% elif result.object.attr == 'mus' %}
+    {% elif event.attr == 'mus' %}
         <td>
         <th>音乐</th></td>
-    {% elif result.object.attr == 'car' %}
+    {% elif event.attr == 'car' %}
         <td>
         <th>汽车</th></td>
-    {% elif result.object.attr == 'boo' %}
+    {% elif event.attr == 'boo' %}
         <td>
         <th>图书</th></td>
-    {% elif result.object.attr == 'gam' %}
+    {% elif event.attr == 'gam' %}
         <td>
         <th>游戏</th></td>
-    {% elif result.object.attr == 'for' %}
+    {% elif event.attr == 'for' %}
         <td>
         <th>国外大学</th></td>
-    {% elif result.object.attr == 'col' %}
+    {% elif event.attr == 'col' %}
         <td>
         <th>国内大学</th></td>
-    {% elif result.object.attr == 'spo' %}
+    {% elif event.attr == 'spo' %}
         <td>
         <th>体育</th></td>
-    {% elif result.object.attr == 'sta' %}
+    {% elif event.attr == 'sta' %}
         <td>
         <th>明星</th></td>
-    {% elif result.object.attr == 'sto' %}
+    {% elif event.attr == 'sto' %}
         <td>
         <th>股票</th></td>
     {% endif %}
@@ -56,7 +56,7 @@
     <th>事件余额：</th>
     </td>
     <td>
-    <th>{{ result.object.e_balance }}</th>
+    <th>{{ event.e_balance }}</th>
     </td>
 </tr>
 <tr>
@@ -64,7 +64,7 @@
     <th>参与人数：</th>
     </td>
     <td>
-    <th>{{ result.object.userprofile_set.all|length }}</th>
+    <th>{{ event.userprofile_set.all|length }}</th>
     </td>
 </tr>
 </table>

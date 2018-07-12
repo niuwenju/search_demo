@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^search/', include('haystack.urls')),
     url(r'^$', views.mysearch),
-    # url(r'^add$', views.add),
-
+    url(r'^add/(?P<ids>[a-z\-@\d\s]+)/$', views.add , name='add'),
+    url(r'^show/$', views.show_events, name='show'),
 ]
